@@ -60,17 +60,15 @@ public class UITree : MonoBehaviour
         {
             if (otherNode == node) continue;
 
-            // Solo verificamos si están en la misma columna (X muy parecido)
-            if (Mathf.Abs(otherNode.transform.localPosition.x - x) < 0.1f)
+            float distance = Mathf.Abs(otherNode.transform.localPosition.y - y);
+            float xDistance = Mathf.Abs(otherNode.transform.localPosition.x - x);
+
+            if (xDistance < 0.1f && distance < spacingY * 0.75f)
             {
-                // Si la distancia vertical es muy pequeña, movemos este nodo hacia abajo
-                if (Mathf.Abs(otherNode.transform.localPosition.y - y) < spacingY)
-                {
-                    y = otherNode.transform.localPosition.y - spacingY;
-                }
+                y -= spacingY; 
+                break;
             }
         }
-
 
         node.transform.localPosition = new Vector3(x, y, 0);
 
