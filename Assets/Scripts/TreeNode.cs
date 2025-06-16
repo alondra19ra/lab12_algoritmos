@@ -15,6 +15,11 @@ public class TreeNode<T>
 
     public void AddChild(TreeNode<T> child)
     {
+        if (Children.Count >= 2)
+        {
+            Debug.LogWarning("Un árbol binario solo puede tener dos hijos.");
+            return;
+        }
         child.Parent = this;
         Children.Add(child);
     }

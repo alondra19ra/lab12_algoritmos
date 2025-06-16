@@ -25,12 +25,12 @@ public class UITreeNode : MonoBehaviour
     }
     public void Start()
     {
-       // DrawLinesToChildren();
+        // DrawLinesToChildren();
         Invoke("DrawLinesToChildren", 1f);
     }
     void Update()
     {
-        
+
     }
 
     void DrawLinesToChildren()
@@ -48,9 +48,14 @@ public class UITreeNode : MonoBehaviour
             LineToChild lineObj = Instantiate(lineprefab);
             lineObj.transform.SetParent(this.transform);
 
-           
+
             lineObj.Set(transform, child.transform, randomColor);
             childLines.Add(lineObj);
         }
     }
+    void OnMouseDown()
+    {
+        Debug.Log("Nodo clickeado: " + Value);
+    }
+
 }

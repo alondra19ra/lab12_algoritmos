@@ -20,21 +20,16 @@ public class LineToChild : MonoBehaviour
         lr.widthMultiplier = 0.05f;
         lr.useWorldSpace = true;
         lr.material = new Material(Shader.Find("Sprites/Default"));
-
-        // Color aleatorio para la línea
-        Color randomColor = Random.ColorHSV();
-        lr.startColor = color;
-        lr.endColor = color;
-
-        lr.SetPosition(0, origin.transform.position);
-        lr.SetPosition(1, target.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        lr.SetPosition(0, origin.transform.position);
-        lr.SetPosition(1, target.transform.position);
+        if (origin != null && target != null && lr != null)
+        {
+            lr.SetPosition(0, origin.position);
+            lr.SetPosition(1, target.position);
+        }
     }
     //public void Enable
 }
